@@ -162,7 +162,11 @@ void RubikCube::decideSidesLR(unsigned& side, unsigned& rot, unsigned& shift1, u
 			shift3 = 2;
 			break;
 	}
+<<<<<<< HEAD
 }
+=======
+
+>>>>>>> d49550ef796194c2effd8804f5070caa16bc15d1
 
 
 void RubikCube::turnDown(unsigned side, unsigned index, Part p)
@@ -213,7 +217,11 @@ void RubikCube::indexCheck(const unsigned int& index, Part p)
 }
 
 
+<<<<<<< HEAD
 //TODO Randomize cube
+=======
+
+>>>>>>> d49550ef796194c2effd8804f5070caa16bc15d1
 bool RubikCube::randomize()
 {
 }
