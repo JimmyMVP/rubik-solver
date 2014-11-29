@@ -10,7 +10,8 @@ int main(int argc, char **argv)
 	cout << rc << endl;
 	rc.turnUp(0, 3, COLUMN);
 	cout << rc << endl;
-	
+
+
 	getchar();
 	return 0;
 }

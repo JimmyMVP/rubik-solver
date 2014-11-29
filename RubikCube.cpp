@@ -25,7 +25,7 @@ m_sidesnum(dimensions), m_rowsnum(rows)
 		}
 	}
 
-
+	randomize();
 }
 
 const char RubikCube::operator()(unsigned side, unsigned i, unsigned j)
@@ -60,8 +60,6 @@ void RubikCube::turnUp(unsigned side, unsigned index, Part p)
 	}
 
 }
-
-
 
 
 /*
