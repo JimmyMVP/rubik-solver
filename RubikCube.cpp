@@ -38,27 +38,36 @@ const char RubikCube::operator()(unsigned side, unsigned i, unsigned j)
 
 
 /*	
-Shifts are supposed clockwise y axis, clockwise x axis, counter clockwise z axis.
+	Shifts are supposed clockwise y axis, clockwise x axis, counter clockwise z axis. The method is supplied with a
+	column index.
 */
-void RubikCube::turnUp(unsigned side, unsigned index, Part p)
+void RubikCube::turnUp(unsigned side, unsigned index)
 {	
 	if(side < 0 || side > 5)
 		throw "Invalid side operation";
-	indexCheck(index,p);
+	indexCheck(index);
 	
 	unsigned rot, shift1, shift2,shift3;
 	decideSidesDU(side, rot, shift1, shift2, shift3);
+	rotateMatrixR(m_sides[side]);
+	
+	
 
-	switch(p)
-	{
-		case COLUMN:
-			rotateMatrixR(m_sides[side]);
-			break;
+}
 
-		case ROW:
-			break;
-	}
+void RubikCube::turnDown(unsigned side, unsigned index)
+{
+	indexCheck(index);
+}
 
+void RubikCube::turnLeft(unsigned side, unsigned index)
+{
+	indexCheck(index);
+}
+
+void RubikCube::turnRight(unsigned side, unsigned index)
+{
+	indexCheck(index);
 }
 
 
@@ -162,16 +171,6 @@ void RubikCube::decideSidesLR(unsigned& side, unsigned& rot, unsigned& shift1, u
 	}
 }
 
-void RubikCube::turnDown(unsigned side, unsigned index, Part p)
-{
-	switch(p)
-	{
-		case COLUMN:
-			break;
-		case ROW:
-			break;
-	}
-}
 
 ostream& operator<<(ostream& out, RubikCube& rc)
 {
@@ -192,20 +191,11 @@ ostream& operator<<(ostream& out, RubikCube& rc)
 	return out;
 }
 
-void RubikCube::indexCheck(const unsigned int& index, Part p)
+void RubikCube::indexCheck(const unsigned int& index)
 {
-	switch(p)
-	{
-		case COLUMN:
-			if(index >= m_sides[0][0].size() || index < 0)
-				throw "Column index not in borders";
-			break;
 
-		case ROW:
-			if(index >= m_sides[0].size() || index < 0)
-				throw "Row index not in borders";
-			break;
-	}
+	if(index >= m_sides[0][0].size() || index < 0)
+		throw "Index not in borders";
 
 }
 
@@ -213,4 +203,10 @@ void RubikCube::indexCheck(const unsigned int& index, Part p)
 //TODO Randomize cube
 bool RubikCube::randomize()
 {
+
+	for(int i = 0; i < 100; i++)
+	{
+		
+	}
+
 }
