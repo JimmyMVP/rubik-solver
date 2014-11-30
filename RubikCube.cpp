@@ -2,6 +2,7 @@
 #include <cassert>
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 #include "headers/MatrixOps.h"
 
 using namespace std;
@@ -20,7 +21,7 @@ m_sidesnum(dimensions), m_rowsnum(rows)
 			m_sides[i][j].resize(columns);
 			for(int k = 0; k < columns; k++)
 			{
-				m_sides[i][j][k] = rand() % 256;
+				m_sides[i][j][k] = i;
 			}
 		}
 	}
@@ -203,9 +204,17 @@ void RubikCube::indexCheck(const unsigned int& index)
 //TODO Randomize cube
 bool RubikCube::randomize()
 {
+	srand(time(NULL));
+	typedef void (RubikCube::* funcp)(unsigned, unsigned);
+	funcp funcpointers[] = {&RubikCube::turnLeft, &RubikCube::turnRight, 
+		&RubikCube::turnDown, &RubikCube::turnUp};
 
 	for(int i = 0; i < 100; i++)
 	{
+		int index = rand()%m_rowsnum;
+		int op = i % 4;
+		int side = rand()%m_sidesnum;
+		(this->*funcpointers[op])(side, index);
 		
 	}
 
